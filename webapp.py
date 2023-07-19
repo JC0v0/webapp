@@ -18,7 +18,7 @@ model = st.sidebar.selectbox(
 llm = ChatOpenAI(temperature=0.3,model=model,openai_api_key=openai_api_keys, streaming=True)
 tools = load_tools(["ddg-search","requests_all"])
 agent = initialize_agent(
-    tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True
+    tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, handle_parsing_errors=True, verbose=True
 )
 
 if prompt := st.chat_input():
